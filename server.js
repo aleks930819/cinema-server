@@ -3,6 +3,8 @@ const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
 const movieRouter = require('./routes/moviesRoutes');
+const { notFound, errorHandler } = require('./middleware/errorMiddleware');
+
 
 
 dotenv.config()
@@ -18,6 +20,9 @@ app.get('/',(req,res) => {
 app.use('/api/movies',movieRouter);
 
 
+app.use(notFound);
+
+app.use(errorHandler);
 
  const PORT = process.env.PORT || 8000;
  const MODE = process.env.NODE_ENV;

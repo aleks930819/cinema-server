@@ -21,7 +21,7 @@ movieRouter.get(
     if (movies) {
       res.json(movies);
     } else {
-      res.status(404).json({ message: 'Product not found' });
+      res.status(404).json({ message: 'Movie not found' });
     }
   })
 );
