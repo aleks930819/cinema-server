@@ -28,27 +28,22 @@ const movieSchema = mongoose.Schema(
       required: true,
       ref: 'User',
     },
-    name: {
+    title: {
       type: String,
       required: true,
     },
 
-    image: {
+    poster: {
       type: String,
       required: true,
     },
 
-    brand: {
+    director: {
       type: String,
       required: true,
     },
 
-    category: {
-      type: String,
-      required: true,
-    },
-
-    description: {
+    overview: {
       type: String,
       required: true,
     },
@@ -61,23 +56,7 @@ const movieSchema = mongoose.Schema(
       default: 0,
     },
 
-    numReviews: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
-
-    price: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
-
-    countInStock: {
-      type: Number,
-      required: true,
-      default: 0,
-    },
+   
   },
   {
     timestamps: true,
@@ -86,4 +65,4 @@ const movieSchema = mongoose.Schema(
 
 const Movie = mongoose.model('Movie', movieSchema);
 
-module.exports = User;
+module.exports = Movie;

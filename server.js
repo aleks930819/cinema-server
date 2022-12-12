@@ -1,5 +1,4 @@
 const express = require('express');
-const products = require('./data/products');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
@@ -26,7 +25,7 @@ app.get('/api/movies',(req,res) => {
  });
 
 
- const PORT = process.env.PORT || 5000;
+ const PORT = process.env.PORT || 8000;
  const MODE = process.env.NODE_ENV;
 
 
