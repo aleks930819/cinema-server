@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon server",
-    "data:import":"node seeder ",
-    "data:delete":"node seeder -d"
+    "data:import": "node seeder ",
+    "data:delete": "node seeder -d"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
     "mongoose": "^6.8.0",
     "nodemon": "^2.0.20"
   }

@@ -2,6 +2,8 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
+const movieRouter = require('./routes/moviesRoutes');
+
 
 dotenv.config()
 
@@ -13,16 +15,8 @@ app.get('/',(req,res) => {
    res.send('API is running...');
 });
 
+app.use('/api/movies',movieRouter);
 
-app.get('/api/movies',(req,res) => {
-    res.json(products);
- });
-
-
- app.get('/api/movie/:id',(req,res) => {
-    const product = products.find(p => p._id === req.params.id);
-    res.json(product);
- });
 
 
  const PORT = process.env.PORT || 8000;
