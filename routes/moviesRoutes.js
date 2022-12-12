@@ -1,29 +1,10 @@
 const express = require('express');
-const asyncHandler = require('express-async-handler');
-
-const Movie = require('../models/movieModel');
+const { getMovies, getMovieById } = require('../controllers/movieController');
 
 const movieRouter = express.Router();
 
-movieRouter.get(
-  '/',
-  asyncHandler(async (req, res) => {
-    const movies = await Movie.find({});
-    res.json(movies);
-  })
+movieRouter.route('/').get(getMovies);
 
-);
-
-movieRouter.get(
-  '/:id',
-  asyncHandler(async (req, res) => {
-    const movies = await Movie.findById(req.params.id);
-    if (movies) {
-      res.json(movies);
-    } else {
-      res.status(404).json({ message: 'Movie not found' });
-    }
-  })
-);
+movieRouter.route('/:id').get(getMovieById);
 
 module.exports = movieRouter;
