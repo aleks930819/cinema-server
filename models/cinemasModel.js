@@ -11,21 +11,25 @@ const cinemaSchema = mongoose.Schema(
     city: {
       type: String,
       required: true,
+
     },
 
     location: {
       type: String,
       required: true,
+
     },
 
     name: {
       type: String,
       required: true,
+
     },
 
     features: {
       type: String,
       required: true,
+
     },
 
     phone: {
