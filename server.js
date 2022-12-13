@@ -2,8 +2,10 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 
-const movieRouter = require('./routes/moviesRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
+
+const movieRouter = require('./routes/moviesRouter');
+const userRouter = require('./routes/userRouter');
 
 
 
@@ -11,13 +13,19 @@ dotenv.config()
 
 connectDB();
 
+
 const app = express();
+
+app.use(express.json())
+
 
 app.get('/',(req,res) => {
    res.send('API is running...');
 });
 
 app.use('/api/movies',movieRouter);
+app.use('/api/users', userRouter);
+
 
 
 app.use(notFound);
