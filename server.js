@@ -13,6 +13,7 @@ const movieRouter = require('./routes/moviesRouter');
 const userRouter = require('./routes/userRouter');
 const uploadRouter = require('./routes/uploadRoutes');
 const cinemaRouter = require('./routes/cinemaRouter');
+const ticketRouter = require('./routes/tickerRouter');
 
 
 
@@ -39,6 +40,8 @@ app.use('/api/movies',movieRouter);
 app.use('/api/users', userRouter);
 app.use('/api/upload', uploadRouter);
 app.use('/api/cinemas',cinemaRouter);
+app.use('/api/tickets',ticketRouter);
+
 
 
 app.use('/uploads',express.static(path.join(__dirname,'/uploads')));

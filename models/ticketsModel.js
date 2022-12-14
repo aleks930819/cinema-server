@@ -7,6 +7,10 @@ const ticketSchema = mongoose.Schema(
       required: true,
       ref: 'User',
     },
+    userName: {
+        type: String,
+        required: true,
+    },
     
     count: {
       type: Number,
@@ -25,6 +29,11 @@ const ticketSchema = mongoose.Schema(
       required: true,
 
     },
+    movieName:{
+      type: String,
+      required: true,
+
+    }
   },
   {
     timestamps: true,
