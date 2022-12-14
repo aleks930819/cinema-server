@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 
 const reviewSchema = mongoose.Schema(
   {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    },
     name: {
       type: String,
       required: true,
@@ -32,6 +37,11 @@ const movieSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    // runtime:{
+    //   type:String,
+    //   required:true
+    // },
+
 
     poster: {
       type: String,
@@ -55,6 +65,11 @@ const movieSchema = mongoose.Schema(
       required: true,
       default: 0,
     },
+
+    price : {
+      type: Number,
+      required:true,
+    }
 
    
   },

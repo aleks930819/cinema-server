@@ -8,7 +8,8 @@ const movies = [
       'https://i.pinimg.com/564x/b7/94/e4/b794e425723a4f19cdd6baf9231ec31e.jpg',
     overview:
       'Nearly 5,000 years after he was bestowed with the almighty powers of the Egyptian gods--and imprisoned just as quickly--Black Adam is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world.',
-    rating:0
+    rating:0,
+    price:15
   },
 
   {
@@ -20,7 +21,9 @@ const movies = [
     overview:
       "When a sadistic serial killer begins murdering key political figures in Gotham, Batman is forced to investigate the city's hidden corruption and question his family's involvement.",
     runtime: '167',
-    rating:0
+    rating:0,
+    price:10
+
    
   },
   {
@@ -32,7 +35,8 @@ const movies = [
     overview:
       'Five assassins aboard a swiftly-moving bullet train find out that their missions have something in common.',
     runtime: '127',
-    rating:0
+    rating:0,
+    price:12
 
   },
 ];

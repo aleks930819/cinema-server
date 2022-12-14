@@ -1,11 +1,17 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const morgan = require('morgan');
+
+
+const path = require('path');
+
 const connectDB = require('./config/db');
 
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 
 const movieRouter = require('./routes/moviesRouter');
 const userRouter = require('./routes/userRouter');
+const uploadRouter = require('./routes/uploadRoutes');
 
 
 
@@ -18,6 +24,9 @@ const app = express();
 
 app.use(express.json())
 
+if(process.env.NODE_ENV === 'development'){
+    app.use(morgan('dev'))
+}
 
 app.get('/',(req,res) => {
    res.send('API is running...');
@@ -25,8 +34,10 @@ app.get('/',(req,res) => {
 
 app.use('/api/movies',movieRouter);
 app.use('/api/users', userRouter);
+app.use('/api/upload', uploadRouter);
 
 
+app.use('/uploads',express.static(path.join(__dirname,'/uploads')));
 
 app.use(notFound);
 
