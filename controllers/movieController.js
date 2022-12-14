@@ -51,7 +51,7 @@ const updateMovieById = asyncHandler(async (req, res) => {
 });
 
 const addMovie = asyncHandler(async (req, res) => {
-  const { title, director, runtime, actors, poster, overview, rating, price } =
+  const { title, director, runtime, actors, poster, overview, rating, price} =
     req.body;
 
   const movie = new Movie({

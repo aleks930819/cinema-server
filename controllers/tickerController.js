@@ -1,26 +1,10 @@
 const asyncHandler = require('express-async-handler');
-const Cinema = require('../models/cinemasModel');
+const Ticket = require('../models/cinemasModel');
 
-const getCinemas = asyncHandler(async (req, res) => {
-  const cinemas = await Cinema.find({});
+const getTickets = asyncHandler(async (req, res) => {
+  const tickets = await Ticket.find({});
 
-  res.json(cinemas);
-});
-
-const addCinema = asyncHandler(async (req, res) => {
-  const { city, location, name, features, phone, imgUrl,user } = req.body;
-
-  const cinema = new Cinema({
-    user:user,
-    city: city,
-    location: location,
-    name: name,
-    features: features,
-    phone: phone,
-    imgUrl: imgUrl,
-  });
-  const createdCinema = await cinema.save();
-  res.status(201).json(createdCinema);
+  res.json(tickets);
 });
 
 const getCinemaById = asyncHandler(async (req, res) => {
@@ -68,5 +52,4 @@ module.exports = {
   getCinemaById,
   deleteCinemaById,
   updateCinemaById,
-  addCinema,
 };
