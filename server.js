@@ -2,7 +2,6 @@ const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 
-
 const path = require('path');
 
 const connectDB = require('./config/db');
@@ -15,44 +14,42 @@ const uploadRouter = require('./routes/uploadRoutes');
 const cinemaRouter = require('./routes/cinemaRouter');
 const ticketRouter = require('./routes/tickerRouter');
 
-
-
-
-
-dotenv.config()
+dotenv.config();
 
 connectDB();
 
-
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
-if(process.env.NODE_ENV === 'development'){
-    app.use(morgan('dev'))
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
 }
 
-app.get('/',(req,res) => {
-   res.send('API is running...');
+app.get('/', (req, res) => {
+  res.send('API is running...');
 });
 
-app.use('/api/movies',movieRouter);
+let allowCrossDomain = function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', '*');
+  next();
+};
+app.use(allowCrossDomain);
+
+app.use('/api/movies', movieRouter);
 app.use('/api/users', userRouter);
 app.use('/api/upload', uploadRouter);
-app.use('/api/cinemas',cinemaRouter);
-app.use('/api/tickets',ticketRouter);
+app.use('/api/cinemas', cinemaRouter);
+app.use('/api/tickets', ticketRouter);
 
-
-
-app.use('/uploads',express.static(path.join(__dirname,'/uploads')));
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 app.use(notFound);
 
 app.use(errorHandler);
 
- const PORT = process.env.PORT || 8000;
- const MODE = process.env.NODE_ENV;
-
-
+const PORT = process.env.PORT || 8000;
+const MODE = process.env.NODE_ENV;
 
 app.listen(PORT, console.log(`Server running in ${MODE} mode on port ${PORT}`));

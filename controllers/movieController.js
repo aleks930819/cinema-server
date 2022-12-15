@@ -83,24 +83,26 @@ const addMovie = asyncHandler(async (req, res) => {
 });
 
 const reviewMovie = asyncHandler(async (req, res) => {
-  const { rating, comment } = req.body;
+  const { rating, comment,name,user} = req.body;
 
   const movie = await Movie.findById(req.params.id);
 
+
   if (movie) {
     const alreadyReviewed = movie.reviews.find(
-      (r) => r.user.toString() === req.user._id.toString()
+      (r) => r.user.toString() === user
     );
+    console.log(movie)
     if (alreadyReviewed) {
       res.status(400);
       throw new Error('Movie is already reviewed');
     }
 
     const review = {
-      name: req.user.name,
       rating: Number(rating),
       comment,
-      user: req.user._id,
+      name,
+      user
     };
     movie.reviews.push(review);
 

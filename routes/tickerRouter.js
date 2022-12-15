@@ -7,7 +7,7 @@ const ticketRouter = express.Router();
 
 ticketRouter
   .route('/')
-  .get(protect, admin, getTickets)
+  .get(getTickets)
   .post(protect, addTicket)
 
 ticketRouter.route('/:id')

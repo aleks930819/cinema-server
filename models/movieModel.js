@@ -7,13 +7,14 @@ const reviewSchema = mongoose.Schema(
       required: true,
       ref: 'User',
     },
-    name: {
-      type: String,
-      required: true,
-    },
+   
     rating: {
       type: Number,
       required: true,
+    },
+    name:{
+      type:String,
+      required:true,
     },
 
     comment: {
@@ -69,7 +70,15 @@ const movieSchema = mongoose.Schema(
     price : {
       type: Number,
       required:true,
+    },
+    actors:{
+      type:String,
+      required:true,
+    },
+    runtime:{
+     type:String
     }
+    
 
    
   },
