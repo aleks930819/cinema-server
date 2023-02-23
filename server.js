@@ -30,20 +30,11 @@ app.get('/', (req, res) => {
   res.send('API is running...');
 });
 
-let allowCrossDomain = function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', '*');
-  next();
-};
-app.use(allowCrossDomain);
-
 app.use('/api/movies', movieRouter);
 app.use('/api/users', userRouter);
-app.use('/api/upload', uploadRouter);
 app.use('/api/cinemas', cinemaRouter);
 app.use('/api/tickets', ticketRouter);
 
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 app.use(notFound);
 

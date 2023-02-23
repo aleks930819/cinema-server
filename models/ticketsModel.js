@@ -2,7 +2,11 @@ const mongoose = require('mongoose');
 
 const ticketSchema = mongoose.Schema(
   {
-   
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: 'User',
+    },
     userName: {
         type: String,
         required: true,
@@ -20,7 +24,11 @@ const ticketSchema = mongoose.Schema(
 
     },
 
-   
+    movieId: {
+      type: String,
+      required: true,
+
+    },
     movieName:{
       type: String,
       required: true,
